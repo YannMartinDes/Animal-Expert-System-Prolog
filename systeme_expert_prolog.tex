@@ -1,0 +1,389 @@
+\documentclass[10pt]{beamer}
+% adaptation au français et accents
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% insérer des images et graphiques
+\usepackage{graphicx}
+%video
+\usepackage{media9}
+
+%Thème
+%\usetheme{Warsaw}
+% couleurs
+\usepackage{xcolor}
+%theme de ses morts LE JOE, LE MARLOT
+
+%pour les numeros de pages
+\addtobeamertemplate{footline}{\hspace{1em}\small\insertframenumber/\inserttotalframenumber}
+%##########################################################
+
+\begin{document}
+
+\title{\huge Système expert PROLOG}
+	\subtitle{\Large L2 Informatique \\
+	Déduction interactive d'un animal suivant une base de connaissances }
+	\author {Romain Kugler \& Yann Martin D'Escrienne \& Maxime Jerome}
+	\institute{\normalsize Université Nice-Sophia Antipolis}
+	\date{\today}
+	
+%Affiche le titre ci-dessus	
+\begin{frame} \titlepage \end{frame}
+
+%Intro
+\begin{frame}
+	\frametitle{\textbf {\Large Introduction}}
+	\framesubtitle{\large Contexte}
+	
+	\begin{block}{}
+	Le monde animal contient environ \textbf{8.7 million} d'espèces\\
+	\smallskip
+	Il convient donc de les classifier selon leurs caractéristiques :
+	\medskip
+	\begin{itemize}	
+		\item Apparence\\
+		\item Mode de déplacement\\
+		\item Alimentation\\
+		\item ect..
+	\end{itemize}
+	
+	\end{block}	
+\end{frame}
+
+\begin{frame}
+	\frametitle{\textbf {\Large Base du système expert}}
+	\framesubtitle{\large Effacement}
+	
+	\begin{columns}
+		\column{0.4\textwidth}
+			\begin{itemize}
+      
+      	%Un système expert est un outil informatique, capable à partir de données d'entrée et par application de règles apprises, de déduire une conclusion logique.
+      
+      	% Un moteur d'inférence permet aux systèmes experts de conduire des 
+        %raisonnements logiques et de dériver des conclusions à partir d'une base de faits et d'une base de connaissances. C'est le progarmme qui réalise cette action
+				\item Sert à savoir si la règle est établie à partir des faits
+        % moteur d'inférences:  algorithme de simulation des raisonnements déductifs
+				\smallskip
+				\item Interactif % demande à l'utilisateur d'intéragir
+				\smallskip
+        % chainage arrière: de la conséquence vers l'antécédants
+        % régime par tentatives: Le système dispose d’instructions pour supprimer ou inhiber des faits.
+				\item Chainage arrière % c'est lui qui regarde tous les faits à établir via des appels recursifs
+				\smallskip
+				\item User-Friendly % utilise une communication "Pourquoi" et "Comment"
+			\end{itemize}
+			
+		\column{0.65\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.35]{effacer.PNG}
+ 				\label{pic: Base de connaissance}
+ 			\end{figure}
+	\end{columns}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{\textbf {\Large Base du système expert}}
+	\framesubtitle{\large "Comment ?"}
+	
+	\begin{columns}
+		\column{0.4\textwidth}
+			\begin{itemize}
+				\item La Trace, l'arbre du Comment
+				\smallskip
+				\item L'arbre est une liste
+				\smallskip
+				\item Garde les faits effacés
+			\end{itemize}
+			
+		\column{0.65\textwidth}
+			\begin{figure}
+				\includegraphics[width=\linewidth]{comment.PNG}
+ 				\label{pic: Base de connaissance}
+ 			\end{figure}
+	\end{columns}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{\textbf {\Large Base du système expert}}
+	\framesubtitle{\large "Pourquoi ?"}
+	
+	\begin{columns}
+		\column{0.4\textwidth}
+			\begin{itemize}
+				\item Explique à l'utilisateur pourquoi le système veut effacer un but
+				\smallskip
+				\item Est une liste
+				\smallskip
+				\item Commune pour chaque sous but d'une règle
+				\smallskip
+				\item La queue est relative à la tête
+			\end{itemize}
+			
+		\column{0.65\textwidth}
+			\begin{figure}
+				\includegraphics[width=\linewidth]{pourquoi.PNG}
+ 				\label{pic: Base de connaissance}
+ 			\end{figure}
+ 			\begin{figure}
+				\includegraphics[width=\linewidth]{pourquoi2.PNG}
+ 				\label{pic: Base de connaissance}
+ 			\end{figure}
+ 			\begin{figure}
+				\includegraphics[width=\linewidth]{pourquoi3.PNG}
+ 				\label{pic: Base de connaissance}
+ 			\end{figure}
+	\end{columns}
+
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{\textbf {\Large Le système expert}}
+	\framesubtitle{\large Base de connaissances}
+	% ces caractéristiques ont été retranscrites à travers une base de connaissances qui sera interrogée par notre système expert
+	\large Organisation de la base de connaissances:
+	\bigskip
+	\begin{columns}
+	
+		\column{0.4\textwidth}
+		\small
+			\begin{itemize}
+				\item Animaux \\-> Règles dynamiques
+					\smallskip
+				\item Animaux \\-> Relation d'arité 1	
+				\smallskip
+				\item Caractéristiques simples \\-> Faits à déterminer
+				\smallskip
+				\item Caractéristiques complexes \\-> Règles % qui découlent des caractéristiques simples
+			\end{itemize}
+			
+		\column{0.65\textwidth}
+			\begin{figure}
+				\includegraphics[width=\linewidth]{SCREEN.PNG}
+ 				\label{pic: Base de connaissance}
+ 			\end{figure}
+	\end{columns}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{\textbf {\Large Le système expert}}
+	\framesubtitle{\large Expertiser : animal}
+	
+	\begin{columns}
+		\column{0.3\textwidth}
+			\begin{itemize}
+				\item Utilisation de la relation "animal" pour backtrack
+				\smallskip
+				\item Tentative d'effacement de l'animal 
+				\smallskip
+				\item Réponse en fonction du résultat d'effacer
+			\end{itemize}
+			
+		\column{0.8\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.5]{expertiser.PNG}
+ 				\label{pic: Base de connaissance}
+ 			\end{figure}
+ 			\begin{figure}
+				\includegraphics[scale=0.6]{animal.PNG}
+ 				\label{pic: Base de connaissance}
+ 			\end{figure}
+	\end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{\textbf {\Large Le système expert }}
+	\framesubtitle{\large Élimination des cas}
+	
+	\bigskip	
+	Le système expert ne demande pas la valeur de vérité des animaux ou des règles de bases quand ils échouent. 
+			\begin{figure}
+				\includegraphics[scale=0.5]{elimination2.PNG}
+ 				\label{pic: Base de connaissance}
+ 			\end{figure}
+ 	
+ 	Il exclue automatiquement certains cas selon les réponses données.
+ 	\begin{columns}
+	
+		\column{0.4\textwidth}
+		\begin{figure}
+				\includegraphics[scale=0.6]{elimination3.PNG}
+ 				\label{pic: Base de connaissance}
+ 		\end{figure}
+			
+		\column{0.65\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.4]{elimination.PNG}
+ 				\label{pic: Base de connaissance}
+ 			\end{figure}
+	\end{columns}
+ 			
+
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{\textbf {\Large Démonstration}}
+	\framesubtitle{\large Questionnement interactif : Lion}
+	\bigskip
+	\bigskip
+	\bigskip
+	 \begin{tikzpicture}[remember picture,overlay]
+         \node[anchor=north west, inner sep=30pt] at (current page.north west) {%
+           \includemedia[
+             addresource=lion.mp4,
+             activate=pageopen,transparent,
+             flashvars={source=lion.mp4},
+             width=0.85\paperwidth,height=0.85\paperheight
+           ]{}{VPlayer.swf}%
+         };
+      \end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}
+
+	\begin{figure}
+		\includegraphics[scale=0.17]{frame1.PNG}
+ 		\label{pic: Base de connaissance}
+ 	\end{figure}
+ 	
+\end{frame}
+
+\begin{frame}
+
+	\begin{figure}
+		\includegraphics[scale=0.17]{frame2.PNG}
+ 		\label{pic: Base de connaissance}
+ 	\end{figure}
+ 	
+\end{frame}
+
+\begin{frame}
+
+	\begin{figure}
+		\includegraphics[scale=0.17]{frame3.PNG}
+ 		\label{pic: Base de connaissance}
+ 	\end{figure}
+ 	
+\end{frame}
+\begin{frame}
+
+	\begin{figure}
+		\includegraphics[scale=0.17]{frame4.PNG}
+ 		\label{pic: Base de connaissance}
+ 	\end{figure}
+ 	
+\end{frame}
+\begin{frame}
+
+	\begin{figure}
+		\includegraphics[scale=0.17]{frame5.PNG}
+ 		\label{pic: Base de connaissance}
+ 	\end{figure}
+ 	
+\end{frame}
+\begin{frame}
+
+	\begin{figure}
+		\includegraphics[scale=0.17]{frame6.PNG}
+ 		\label{pic: Base de connaissance}
+ 	\end{figure}
+ 	
+\end{frame}
+
+\begin{frame}
+	\frametitle{\textbf {\Large Démonstration}}
+	\framesubtitle{\large Questionnement interactif : abeille}
+	\bigskip
+	\bigskip
+	\bigskip
+	 \begin{tikzpicture}[remember picture,overlay]
+         \node[anchor=north west, inner sep=30pt] at (current page.north west) {%
+           \includemedia[
+             addresource=abeille.mp4,
+             activate=pageopen,transparent,
+             flashvars={source=abeille.mp4},
+             width=0.85\paperwidth,height=0.85\paperheight
+           ]{}{VPlayer.swf}%
+         };
+      \end{tikzpicture}
+	
+
+\end{frame}
+
+\begin{frame}
+
+	\begin{figure}
+		\includegraphics[scale=0.17]{frame1_2.PNG}
+ 		\label{pic: Base de connaissance}
+ 	\end{figure}
+ 	
+\end{frame}
+
+\begin{frame}
+
+	\begin{figure}
+		\includegraphics[scale=0.17]{frame2_2.PNG}
+ 		\label{pic: Base de connaissance}
+ 	\end{figure}
+ 	
+\end{frame}
+
+\begin{frame}
+
+	\begin{figure}
+		\includegraphics[scale=0.17]{frame3_2.PNG}
+ 		\label{pic: Base de connaissance}
+ 	\end{figure}
+ 	
+\end{frame}
+
+\begin{frame}
+
+	\begin{figure}
+		\includegraphics[scale=0.17]{frame4_2.PNG}
+ 		\label{pic: Base de connaissance}
+ 	\end{figure}
+ 	
+\end{frame}
+\begin{frame}
+
+	\begin{figure}
+		\includegraphics[scale=0.17]{frame5_2.PNG}
+ 		\label{pic: Base de connaissance}
+ 	\end{figure}
+ 	
+\end{frame}
+\begin{frame}
+
+	\begin{figure}
+		\includegraphics[scale=0.17]{frame6_2.PNG}
+ 		\label{pic: Base de connaissance}
+ 	\end{figure}
+ 	
+\end{frame}
+
+\begin{frame}
+	\frametitle{\textbf {\Large Conclusion}}
+	
+	\begin{itemize}
+		
+		\item Prototype interactif et explicatif fonctionnel
+		\smallskip
+		\item Pseudo classification des animaux %application
+		\smallskip
+		\item Base de connaissance extensible %limites
+	\end{itemize}
+\end{frame}
+
+%% Rajouter une autre frame pour l'ouverture/limite/questionnement ? 
+
+\end{document}
