@@ -1,5 +1,5 @@
 # Systeme Expert L2 project: Animals.
-### This project is based on the [Prolog] language (https://fr.wikipedia.org/wiki/Prolog). It consisted in creating an expert system on the subject of our choice (here animals). The expert system must, after a series of questions, find the animal the user is thinking of.
+### This project is based on the [Prolog language](https://fr.wikipedia.org/wiki/Prolog). It consisted in creating an expert system on the subject of our choice (here animals). The expert system must, after a series of questions, find the animal the user is thinking of.
 
 The expert system has a base of animals and their evolutionary characteristics.  
 Depending on the answers, it automatically eliminates certain impossible cases (such as vertebrate/invertebrate) and continues to ask questions about the animal that so far matches the criteria.  
