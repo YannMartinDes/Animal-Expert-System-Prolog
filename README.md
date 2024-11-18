@@ -1,11 +1,10 @@
-# Projet Systeme Expert L2 : Les Animaux.
-### Ce projet est fait dans le langage [Prolog](https://fr.wikipedia.org/wiki/Prolog). Il consistait à créer un systeme expert sur le sujet de notre choix (ici les animaux). Le système expert doit, après une série de question trouver l'animal auquel l'utilisateur pense.
+# Systeme Expert L2 project: Animals.
+### This project is based on the [Prolog] language (https://fr.wikipedia.org/wiki/Prolog). It consisted in creating an expert system on the subject of our choice (here animals). The expert system must, after a series of questions, find the animal the user is thinking of.
 
-Le systeme expert possède une base d'animaux et de leurs caractéristiques (au niveau évolutif).  
-En fonction des réponses, il élimine automatiquement certains cas impossible (comme vertébré/invertébré) et continue de poser des questions sur l'animal qui correspond jusque là aux critères.  
-Une fois un animal établie, il explique comment celui-ci a été trouvé. 
+The expert system has a base of animals and their evolutionary characteristics.  
+Depending on the answers, it automatically eliminates certain impossible cases (such as vertebrate/invertebrate) and continues to ask questions about the animal that so far matches the criteria.  
+Once an animal has been established, it explains how it was found. 
 
-Ce projet a été soutenu devant notre professeur. Les diapositives ont été ecrites en [Latex-Beamer](https://fr.wikipedia.org/wiki/LaTeX)  
-Voici les [diapositives au format pdf](https://github.com/Mentra20/Projet-Systeme-Expert-L2/blob/master/systeme_expert_prolog.pdf) et le [fichier tex](https://github.com/Mentra20/Projet-Systeme-Expert-L2/blob/master/systeme_expert_prolog.tex) source.  
+Here are the [slides in pdf format](/systeme_expert_prolog.pdf) and the [tex file](/systeme_expert_prolog.tex) source.  
 
-Voici le [fichier prolog](https://github.com/Mentra20/Projet-Systeme-Expert-L2/blob/master/Projet.pl) du projet ainsi que deux vidéos de démonstration sur [le lion](https://github.com/Mentra20/Projet-Systeme-Expert-L2/blob/master/lion.mp4) et [l'abeille](https://github.com/Mentra20/Projet-Systeme-Expert-L2/blob/master/abeille.mp4).
+Here's the [prolog file](/Projet.pl)  and two demonstration videos on [the lion](/lion.mp4) and [the bee](/abeille.mp4).
